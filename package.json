@@ -1,0 +1,26 @@
+{
+  "name": "express_quiz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write **/*.{tsx,jsx,ts,js,html,json}",
+    "format:check": "prettier --check **/*.{tsx,jsx,ts,js,html,json}",
+    "commit": "npm run format:check && tsc",
+    "verify": "npm run format:check && tsc && jest --collectCoverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christian-edu/express_quiz.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christian-edu/express_quiz/issues"
+  },
+  "homepage": "https://github.com/christian-edu/express_quiz#readme",
+  "devDependencies": {
+    "prettier": "^2.5.1"
+  }
+}

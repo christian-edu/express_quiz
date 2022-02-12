@@ -9,11 +9,7 @@
   "scripts": {
     "start": "ts-node server.ts",
     "dev": "nodemon --ext ts,js,json --exec npm start",
-    "format": "prettier --write **/*.{tsx,jsx,ts,js,html,json}",
-    "format:check": "prettier --check **/*.{tsx,jsx,ts,js,html,json}",
-    "test": "jest",
-    "commit": "npm run format:check && tsc",
-    "verify": "npm run format:check && tsc && jest --collectCoverage"
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -36,7 +32,6 @@
     "babel-jest": "^27.4.6",
     "jest": "^27.4.7",
     "nodemon": "^2.0.15",
-    "prettier": "^2.5.1",
     "supertest": "^6.2.2",
     "typescript": "^4.5.5"
   },
