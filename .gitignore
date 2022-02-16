@@ -3,3 +3,5 @@ node_modules/
 server/.env
 .idea/*
 
+/client/.parcel-cache/
+/client/dist/
