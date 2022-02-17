@@ -1,15 +1,16 @@
 import * as React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import { Routes, Route } from "react-router";
-import { Quiz } from "./quiz";
+import { Route, Routes } from "react-router";
+import { CorrectAnswer, FrontPage, Quiz } from "./quiz";
 
 function Application() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Quiz />} path={"/"} />
-        <Route path={"/correct"} element={<h1>Correct</h1>} />
+        <Route element={<FrontPage />} path={"/"} />
+        <Route element={<Quiz />} path={"/quiz"} />
+        <Route path={"/correct"} element={CorrectAnswer()} />
       </Routes>
     </BrowserRouter>
   );
