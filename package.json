@@ -26,5 +26,8 @@
   "homepage": "https://github.com/christian-edu/express_quiz#readme",
   "devDependencies": {
     "prettier": "^2.5.1"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
