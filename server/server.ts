@@ -12,10 +12,10 @@ app.use(cookieParser("topsecret"));
 app.use(bodyParser.json());
 app.use("/quiz", QuizApp);
 
-app.use(express.static(path.resolve("../..//client/dist")));
+app.use(express.static(path.resolve("../client/dist")));
 app.use((req, res, next) => {
   if (req.method === "GET" && !req.path.startsWith("/quiz")) {
-    return res.sendFile(path.resolve("../../client/dist/index.html"));
+    return res.sendFile(path.resolve("../client/dist/index.html"));
   } else {
     next();
   }
