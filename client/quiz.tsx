@@ -11,7 +11,7 @@ type answerType =
   | "answer_f";
 type answer_correct = `${answerType}_correct`;
 
-interface Question {
+interface IQuestion {
   id: number;
   question: string;
   description: string | null;
@@ -25,7 +25,12 @@ interface Question {
   difficulty: "Easy";
 }
 
-function Answers({ question }: { question: Question }) {
+interface IScore {
+  answers: number;
+  correct: number;
+}
+
+function Answers({ question }: { question: IQuestion }) {
   const { answers }: { answers: Record<answerType, string | null> } = question;
   const [answer, setAnswer] = useState<answerType>();
   const navigate = useNavigate();
@@ -75,7 +80,7 @@ function Answers({ question }: { question: Question }) {
   );
 }
 
-function Question({ question }: { question: Question }) {
+function Question({ question }: { question: IQuestion }) {
   return (
     <div>
       <h1>{question.question}</h1>
@@ -85,11 +90,11 @@ function Question({ question }: { question: Question }) {
 }
 
 export function Quiz() {
-  const [question, setQuestion] = useState<Question>();
+  const [question, setQuestion] = useState<IQuestion>();
   const [loading, setLoading] = useState(true);
   useEffect((): void => {
     setLoading(true);
-    const randomQuestion = async (): Promise<Question> => {
+    const randomQuestion = async (): Promise<IQuestion> => {
       const res = await fetch("/quiz/random");
       return await res.json();
     };
@@ -139,10 +144,6 @@ export function WrongAnswer() {
   );
 }
 
-interface IScore {
-  answers: number;
-  correct: number;
-}
 export function Score() {
   const [score, setScore] = useState<IScore>();
   useEffect(() => {
