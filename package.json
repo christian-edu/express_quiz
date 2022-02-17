@@ -7,7 +7,7 @@
     "start": "cd server && npm start",
     "build": "npm run build:client && npm run build:server",
     "build:client": "cd client && npm install --include=dev && npm run build",
-    "build:server": "cd server && npm install",
+    "build:server": "cd server && npm install --include=dev",
     "format": "prettier --write **/*.{tsx,jsx,ts,js,html,json}",
     "format:check": "prettier --check **/*.{tsx,jsx,ts,js,html,json}",
     "commit": "npm run format:check && tsc",
