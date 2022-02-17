@@ -49,8 +49,8 @@ function Answers({ question }: { question: IQuestion }) {
   const [answer, setAnswer] = useState<answerType>();
   const navigate = useNavigate();
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
-    e.preventDefault();
+  function handleSubmit(): void {
+    //e.preventDefault();
     if (!answer) throw Error("Nothing selected!");
     const res = fetch("/quiz/answer", {
       method: "POST",
@@ -71,7 +71,7 @@ function Answers({ question }: { question: IQuestion }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form>
         {Object.keys(answers)
           .map((el) => el as answerType)
           .filter((v) => answers[v] !== null)
@@ -89,7 +89,9 @@ function Answers({ question }: { question: IQuestion }) {
             );
           })}
         <br />
-        <Button variant={"contained"}>Check answer</Button>
+        <Button variant={"contained"} onClick={handleSubmit}>
+          Check answer
+        </Button>
       </form>
     </>
   );
