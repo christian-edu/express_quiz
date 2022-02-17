@@ -138,3 +138,28 @@ export function WrongAnswer() {
     </div>
   );
 }
+
+interface IScore {
+  answers: number;
+  correct: number;
+}
+export function Score() {
+  const [score, setScore] = useState<IScore>();
+  useEffect(() => {
+    const data = async () => {
+      const res = await fetch("/quiz/score");
+      return await res.json();
+    };
+    data().then((s) => setScore(s as IScore));
+  }, []);
+  if (score) {
+    return (
+      <div>
+        <Navigation />
+        <p>Correct Answers: {score.correct}</p>
+        <p>Total Answers: {score.answers}</p>
+      </div>
+    );
+  }
+  return <div>loading..</div>;
+}
