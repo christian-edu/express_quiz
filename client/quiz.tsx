@@ -1,6 +1,20 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import {
+  AppBar,
+  Avatar,
+  Box,
+  Button,
+  Container,
+  IconButton,
+  Menu,
+  MenuItem,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import Toolbar from "@mui/material/Toolbar";
 
 type answerType =
   | "answer_a"
@@ -74,7 +88,8 @@ function Answers({ question }: { question: IQuestion }) {
               </div>
             );
           })}
-        <button>Check answer</button>
+        <br />
+        <Button variant={"contained"}>Check answer</Button>
       </form>
     </>
   );
@@ -114,16 +129,39 @@ export function Quiz() {
 }
 
 function Navigation() {
+  const navigate = useNavigate();
   return (
-    <>
-      <Link to={"/score"}>Score</Link>
-      <Link to={"/quiz"}>New question</Link>
-    </>
+    <AppBar position="static">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "flex" } }}>
+            <Button
+              key={2}
+              sx={{ my: 2, color: "white", display: "block" }}
+              onClick={() => navigate("/score")}
+            >
+              Score
+            </Button>
+            <Button
+              key={3}
+              sx={{ my: 2, color: "white", display: "block" }}
+              onClick={() => navigate("/quiz")}
+            >
+              New question
+            </Button>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 }
 
 export function FrontPage() {
-  return <div>{Navigation()}</div>;
+  return (
+    <div>
+      <Navigation />
+    </div>
+  );
 }
 
 export function CorrectAnswer() {
